@@ -28,7 +28,16 @@ function onMessageHandler (target, context, msg, self) {
 
   if (!users.includes(context.username)) {
     users.push(context.username);
-    client.say(target, greetings.get(context.username));
+
+    if (context.username.toLowerCase() == 'balzcak') {
+      client.say(target, greetings.getForBalczak());
+    }
+    else if (context.username.toLowerCase() == 'streamelements') {
+      client.say(target, "@StreamElements? never heard of her");
+    }
+    else {
+      client.say(target, greetings.get(context.username));
+    }
   }
 
   //console.log(JSON.stringify(target));

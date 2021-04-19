@@ -14,7 +14,7 @@ module.exports = {
             'I used to hate facial hair but then it grew on me.',
             'How does your feline shop?... By reading a CATalogue.',
             'How do you like eggs, Sunny-side up, scrambled, or an omelet?... I guess it doesn\'t matter. They\'re all eggcellent.',
-            'What do you call an empty can of Cheese Whiz?... Cheese Was.',
+            'What do you call an empty can of Cheese Whiz?... Cheese Was.'
         ];
 
         return jokes[Math.floor((Math.random()*jokes.length))];
