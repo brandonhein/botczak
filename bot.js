@@ -1,6 +1,8 @@
 const tmi = require('tmi.js');
 const greetings = require('./greetings');
 const commandRouter = require('./commands/command-router');
+const screener = require('./bot-screener');
+const { getForStreamElements } = require('./greetings');
 const users = [];
 
 const opts = {
@@ -29,11 +31,14 @@ function onMessageHandler (target, context, msg, self) {
   if (!users.includes(context.username)) {
     users.push(context.username);
 
-    if (context.username.toLowerCase() == 'balzcak') {
+    if (context.username.toLowerCase() == 'balczak') {
       client.say(target, greetings.getForBalczak());
     }
     else if (context.username.toLowerCase() == 'streamelements') {
-      client.say(target, "@StreamElements? never heard of her");
+      client.say(target, greetings.getForStreamElements());
+    }
+    else if (screener.isBotMessage(msg)) {
+      client.say(target, `@${context.username} you a bot, bro?`);
     }
     else {
       client.say(target, greetings.get(context.username));

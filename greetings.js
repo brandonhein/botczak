@@ -12,19 +12,30 @@ module.exports = {
             `@balczak! @${name} came to see us!!!`,
             `HIIIIIIIIIIIIIII @${name}!!!`,
             `Party don't start, until @${name} walks in!`
-        ]
+        ];
 
         return greetings[Math.floor((Math.random()*greetings.length))];
     },
     getForBalczak: function(){
         let greetings = [
-            'Hello Daddy @balzcak, lets have a great stream today!',
+            'Hello Daddy @balczak, lets have a great stream today!',
             '@balczak are you ready for todays stream?!?!?!',
             'DAADDDDDDYYYYYYYYYYY!!!!',
             'Welcome Home @balczak',
             'Yo @balczak! SUP BRUH!',
             'Is @brandonhein in yet? Probably not, that slacker *quote* working *unquote*'
-        ]
+        ];
+
+        return greetings[Math.floor((Math.random()*greetings.length))];
+    },
+    getForStreamElements: function() {
+        let greetings = [
+            `Yo! @StreamElements, I'm comin for your job!`,
+            `@StreamElements? never heard of her`,
+            `@StreamElements < @botczak, forsure!`,
+            `Wanna fight @StreamElements? This is my stream!`,
+            `Must be nice to have a team of developers working on you @StreamElements`,
+        ];
 
         return greetings[Math.floor((Math.random()*greetings.length))];
     }
