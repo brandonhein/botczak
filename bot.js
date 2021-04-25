@@ -54,5 +54,5 @@ function onMessage(channel, context, msg, isSelf) {
 
   var result = commandRouter.route(commandName);
   if (result)
-    client.say(target, result);
+    client.say(channel, result);
 }

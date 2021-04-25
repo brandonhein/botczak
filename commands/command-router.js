@@ -25,6 +25,8 @@ module.exports = {
             case "rofl":
             case "hahahaha":
             case "hahaha":
+            case "haha":
+            case "hah":
                 return require('./laugh').execute();
 
             case "bye nicki":
