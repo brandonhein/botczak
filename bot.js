@@ -2,7 +2,6 @@ const tmi = require('tmi.js');
 const greetings = require('./greetings');
 const commandRouter = require('./commands/command-router');
 const screener = require('./bot-screener');
-const { getForStreamElements } = require('./greetings');
 const users = [];
 
 const opts = {
@@ -17,37 +16,37 @@ const opts = {
 };
 
 const client = new tmi.client(opts);
-client.on('message', onMessageHandler);
-client.on('connected', onConnectedHandler);
+client.on('message', onMessage);
+client.on('connected', onConnect);
 client.connect();
 
-function onConnectedHandler (addr, port) {
+function onConnect(addr, port) {
   console.log(`* Connected to ${addr}:${port}`);
 }
 
-function onMessageHandler (target, context, msg, self) {
-  if (self) { return; }
+function onMessage(channel, context, msg, isSelf) {
+  if (isSelf) { return; }
 
   if (!users.includes(context.username)) {
     users.push(context.username);
 
     if (context.username.toLowerCase() == 'balczak') {
-      client.say(target, greetings.getForBalczak());
+      client.say(channel, greetings.getForBalczak());
     }
     else if (context.username.toLowerCase() == 'streamelements') {
-      client.say(target, greetings.getForStreamElements());
+      client.say(channel, greetings.getForStreamElements());
     }
     else if (screener.isBotMessage(msg)) {
-      client.say(target, `@${context.username} you a bot, bro?`);
+      client.say(channel, `@${context.username} you a bot, bro?`);
     }
     else {
-      client.say(target, greetings.get(context.username));
+      client.say(channel, greetings.get(context.username));
     }
   }
 
-  //console.log(JSON.stringify(target));
-  //console.log(JSON.stringify(context));
-  //console.log(JSON.stringify(self));
+  //console.log(JSON.stringify(channel));
+  console.log(JSON.stringify(context));
+  //console.log(JSON.stringify(isSelf));
   //console.log(JSON.stringify(msg));
 
   console.log(`${context.username}: ${msg}`);
